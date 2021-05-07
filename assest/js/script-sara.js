@@ -42,16 +42,10 @@ var CharChoice = prompt ("Would you like Special Characters.  Enter y for Yes an
   else if (!no.includes(CharChoice) && !yes.includes(CharChoice)){
     alert("That is not a choice");
   }
-  var possiblePass = {
-    length: length, special chars: special chars
-  }
 }
 
 
-//Create a fucntion for getting a ramdom element
-function getRamdomLetters(arr){
-  var random = //get  create a random arraw and the index should be randomized
-}
+
 
 
 function writePassword() {
@@ -64,25 +58,14 @@ function writePassword() {
 
 
 
-/////////////////////
 
 
-//create a function to generate the pasword with the user input
-//Minoli;s way/
-
-/************** *
- * 
- * 
- * function  generatePassword(){
- *  var options = getPassword();
- *  
- * var passResult=[];    stores concatenated password
- * var possibleChars=[]; 
- * var guarChars =[];
- * 
- * }
 
 
-dd event listener to generate button
-generateBtn.addEventListener("click", writePassword);*/
 
+
+
+
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
