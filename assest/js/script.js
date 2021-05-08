@@ -1,88 +1,120 @@
-// Assignment Code
+window.addEventListener("load", function () {
+  var pwlength = prompt(
+    "Creates Password between 8 and 128 characters\n How many characters do"
+  );
+  while (pwlength < 8 || pwlength > 128) {
+    pwlength = prompt(
+      "Length must be 8-128 characters. How many     characters would you like your password to be?"
+    );
+  }
+  console.log("this is the PW lenght given " + pwlength);
+
+  var upperCase = confirm("Would you like to use uppercase letters?");
+  var lowerCase = confirm("Would you like to use lowercase letters?");
+  var number = confirm("would you like to use numbers?");
+  var symbol = confirm("would you like to use special characters?");
+  console.log("these were confirmed: " + "Uppercase " + upperCase + ", Lowercase "+ lowerCase + ", Numbers " +number + ", Symbols "+ symbol);
 
 
-var specialChars=[ "!", "#", "$", "%", "&", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "]", "^", "_", "`", "{", "|", "}", "~", " ' ", " ", ' " ', "\\" ];
+  while (!(upperCase || lowerCase || number || symbol)) {
+    alert("You must select at least one character type!");
 
+    upperCase = confirm("Would you like to use uppercase letters?");
+    lowerCase = confirm("Would you like to use lowercase letters?");
+    numbers = confirm("would you like to use numbers?");
+    symbols = confirm("would you like to use special characters?");
+  }
 
-//
-var numbArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0
-];
+  //DOM elements
+  const resultEl = document.getElementById("password");
 
-//lower case Array
+  document.getElementById("generate").addEventListener("click", function() {
+    resultEl.value = generatePassword(
+      lowerCase,
+      upperCase,
+      number,
+      symbol,
+      pwlength
+    );
+  });
 
-var lowerCase =["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-;
-var upperCase =["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+/*  document.getElementById("clipboard").addEventListener("click", function() {
+    const textarea = document.createElement("textarea");
+    const password = resultEl.value;
 
-
-var generateBtn = document.querySelector("#generate");
-
-
-var yes = "y";
-var no = "n";
-var passwordLength = 0;
-var choices = [];
-
-// Write password to the #password input
-function generatePassword(){
-  while (parseInt (passwordLength) < 8 ||parseInt (passwordLength) >128){
-    passwordLength= prompt("Please enter the length of the password you like");
-    if (parseInt (passwordLength) < 8 ||parseInt (passwordLength) >128){
-      passwordLength= prompt("Please enter password between 8 and 128");
+    if (!password) {
+      return;
     }
-    else if (passwordLength== "" || Number.isNaN (parseInt (passwordLength))){
-       passwordLength = prompt("Please enter a valid promt")
-    }
+
+    textarea.value = password;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    
+    textarea.remove();
+    alert("Password copied to clipboard");
+  });
+}); */
+
+const randomFunc = {
+  lower: getRandomLower,
+  upper: getRandomUpper,
+  number: getRandomNumber,
+  symbol: getRandomSymbol,
+};
+
+function generatePassword(lower, upper, number, symbol, length) {
+  let generatedPassword = "";
+  const typesCount = lower + upper + number + symbol;
+  const typesArr = [
+    {
+      lower,
+    },
+    {
+      upper,
+    },
+    {
+      number,
+    },
+    {
+      symbol,
+    },
+  ].filter((item) => Object.values(item)[0]);
+
+  // create a loop
+  for (let i = 0; i < length; i++) {
+    typesArr.forEach((type) => {
+      const funcName = Object.keys(type)[0];
+      generatedPassword += randomFunc[funcName]();
+    });
   }
 
-var CharChoice = prompt ("Would you like Special Characters.  Enter y for Yes and n for No");
-  if (CharChoice === yes){ 
-    CharChoice.push(specialChars);
-  }
-  else if (!no.includes(CharChoice) && !yes.includes(CharChoice)){
-    alert("That is not a choice");
-  }
-  var possiblePass = {
-    length: length, special chars: special chars
-  }
+  const finalPassword = generatedPassword.slice(0, length);
+
+  return finalPassword;
 }
 
-
-//Create a fucntion for getting a ramdom element
-function getRamdomLetters(arr){
-  var random = //get  create a random arraw and the index should be randomized
+// Generator functions
+function getRandomLower() {
+  return String.fromCharcode(Math.floor(Math.random() * 26) + 97);
 }
 
-
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
+function getRandomUpper() {
+  return String.fromCharcode(Math.floor(Math.random() * 26) + 65);
 }
 
+function getRandomNumber() {
+  return String.fromCharcode(Math.floor(Math.random() * 10) + 48);
+}
 
+function getRandomSymbol() {
+  const symbol= "!@#$%^&*()_+<>?";
+  return symbol[Math.floor(Math.random() *symbol.length)];
+}
+//check to see they work
 
-/////////////////////
+console.log(getRandomUpper());
+console.log(getRandomNumber());
+console.log(getRandomSymbol());
 
-
-//create a function to generate the pasword with the user input
-//Minoli;s way/
-
-/************** *
- * 
- * 
- * function  generatePassword(){
- *  var options = getPassword();
- *  
- * var passResult=[];    stores concatenated password
- * var possibleChars=[]; 
- * var guarChars =[];
- * 
- * }
-
-
-dd event listener to generate button
-generateBtn.addEventListener("click", writePassword);*/
 
