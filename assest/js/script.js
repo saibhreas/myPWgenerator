@@ -4,7 +4,7 @@ window.addEventListener("load", function () {
   );
   while (pwlength < 8 || pwlength > 128) {
     pwlength = prompt(
-      "Length must be 8-128 characters. How many     characters would you like your password to be?"
+      "Length must be 8-128 characters. \nHow many characters would you like your password to be?"
     );
   }
   console.log("this is the PW lenght given " + pwlength);
@@ -38,7 +38,7 @@ window.addEventListener("load", function () {
     );
   });
 
-/*  document.getElementById("clipboard").addEventListener("click", function() {
+  document.getElementById("clipboard").addEventListener("click", function() {
     const textarea = document.createElement("textarea");
     const password = resultEl.value;
 
@@ -54,7 +54,7 @@ window.addEventListener("load", function () {
     textarea.remove();
     alert("Password copied to clipboard");
   });
-}); */
+});
 
 const randomFunc = {
   lower: getRandomLower,
@@ -96,15 +96,15 @@ function generatePassword(lower, upper, number, symbol, length) {
 
 // Generator functions
 function getRandomLower() {
-  return String.fromCharcode(Math.floor(Math.random() * 26) + 97);
+  return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
 }
 
 function getRandomUpper() {
-  return String.fromCharcode(Math.floor(Math.random() * 26) + 65);
+  return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
 }
 
 function getRandomNumber() {
-  return String.fromCharcode(Math.floor(Math.random() * 10) + 48);
+  return String.fromCharcCode(Math.floor(Math.random() * 10) + 48);
 }
 
 function getRandomSymbol() {
@@ -116,5 +116,6 @@ function getRandomSymbol() {
 console.log(getRandomUpper());
 console.log(getRandomNumber());
 console.log(getRandomSymbol());
+
 
 
