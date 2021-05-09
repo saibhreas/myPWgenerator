@@ -2,31 +2,41 @@
 ![Image](https://saibhreas.github.io/myPWgenerator/assets/img/ScreenShots.png)
 
 
-# Password Genereator
+# **Password Genereator**
 ## JS assignemnt to create a Password Generator
 ### Plese pardon apperance, still learning MD language
 Password Generator
-<ul> **Criteria:
+
+ #### **Criteria:**
+ <ul>
 <li> generate password on event.
 	<li>Prompt user for # of characters (stipulation--  must be between 8 & 128 character length)
 	<li>Prompt the user for choices, and prompt when choices are not the right type.
 	<li>Place password on the window in assigned space.
-<ul>Given:
+	</ul>  
+
+
+#### **Given:**
+  <ul>
 	<li> html index (base platform)
 	<li> css sytle sheet (base platform)
-<product>
+	</ul>  
+
+
+#### ***Product**
+<ul>
 	<li> Working JS script (all links and internet runnable
 	<li> README.md with description and images.
 	<li> Github repository
 		<ul> 
 <li>Working Site links
 <li> Site page
-<li>Evidence of good practices like multiple commit operations
----
+<li>Evidence of good practices like multiple commit operations.
+</ul>
+</ul>
 
 
-
-### **About:
+### **About:**
 <ul> Choices:
 	<li> Did not want to handle static arrays when using the UTF(Unicode Transformation Format) is included in the html (<meta charset=”UTF-8”)
 Found function that accomplishes the task of creating random characters, as needed, without need for parsing.
