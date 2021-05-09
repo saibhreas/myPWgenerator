@@ -22,7 +22,8 @@ Password Generator
 <li>Working Site links
 <li> Site page
 <li>Evidence of good practices like multiple commit operations
-Line/section break
+---
+	
 About:
 	Choices:
 		Ul
