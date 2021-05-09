@@ -10,9 +10,9 @@ Password Generator
 #### **Criteria:**
  <ul>
 <li> generate password on event.
-	<li>Prompt user for # of characters (stipulation--  must be between 8 & 128 character length)
-	<li>Prompt the user for choices, and prompt when choices are not the right type.
-	<li>Place password on the window in assigned space.
+	<li>Prompt user for # of characters (stipulation--  must be between 8 & 128 character length)</l>
+	<li>Prompt the user for choices, and prompt when choices are not the right type.</l>
+	<li>Place password on the window in assigned space.</l>
 	</ul>  
 
 
@@ -36,12 +36,14 @@ Password Generator
 </ul>
 
 
-### **About:**
-<ul> Choices:
+### **About:**  
+
+**Choices:**
+<ul>
 	<li> Did not want to handle static arrays when using the UTF(Unicode Transformation Format) is included in the html (<meta charset=”UTF-8”)
 Found function that accomplishes the task of creating random characters, as needed, without need for parsing.
-Using the UTF set  characters placement in the table, decimal index, library functions of Max Floor & Max Random to produce (as needed array elements) of specified types: Upper case, Lower case, and Number.  
-Symbol does not have a standard range in the UTF table requiring an array to be made of character options to randomize.  Randomization used Max Floor & Max Random and the array length to set the choice of characters.
+Using the UTF set  characters placement in the table, decimal index, library functions of Max Floor & Max Random to produce (as needed array elements) of specified types: Upper case, Lower case, and Number. </l>
+																   <li>Symbol does not have a standard range in the UTF table requiring an array to be made of character options to randomize.  Randomization used Max Floor & Max Random and the array length to set the choice of characters.
 	<li> Eliminated need for constant user prompt and response (decrease the time the script occupies the event stack for window), by using prompt’s property combines with ‘Confirm’.  Use of confirm minimized user non-compliance and redundant calls for event tying up the interface.
 This also reduced the size of the code by eliminating multiple if conditions.
 
