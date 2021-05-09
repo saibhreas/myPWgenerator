@@ -23,7 +23,7 @@ Password Generator
 	</ul>  
 
 
-#### ***Product**
+#### **Product**
 <ul>
 	<li> Working JS script (all links and internet runnable
 	<li> README.md with description and images.
