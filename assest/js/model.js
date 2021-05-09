@@ -1,4 +1,4 @@
-//window.addEventListener("load", function () {
+window.addEventListener("load", function () {
   var pwlength = prompt(
     "Creates Password between 8 and 128 characters\n How many characters do"
   );
@@ -54,7 +54,7 @@
     textarea.remove();
     alert("Password copied to clipboard");
   });*/
-//});
+});
 
 const randomFunc = {
 	lower: getRandomLower,

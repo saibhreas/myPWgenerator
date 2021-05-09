@@ -1,10 +1,10 @@
-//window.addEventListener("load", function () {
+window.addEventListener("load", function () {
   var pwlength = prompt(
     "Creates Password between 8 and 128 characters\n How many characters do"
   );
-  while (isNaN(pwlength) || pwlength < 8 || pwlength > 128) {
+  while (pwlength < 8 || pwlength > 128) {
     pwlength = prompt(
-      "Length must be numbers between 8- 128 characters. \nHow many characters would you like your password to be?"
+      "Length must be 8-128 characters. \nHow many characters would you like your password to be?"
     );
   }
   console.log("this is the PW lenght given " + pwlength);
@@ -38,7 +38,7 @@
     );
   });
 
-  /*document.getElementById("clipboard").addEventListener("click", function() {
+  document.getElementById("clipboard").addEventListener("click", function() {
     const textarea = document.createElement("textarea");
     const password = resultEl.value;
 
@@ -53,20 +53,19 @@
     
     textarea.remove();
     alert("Password copied to clipboard");
-  });*/
-//});
+  });
+});
 
-const randomFunc = {
-	lower: getRandomLower,
-	upper: getRandomUpper,
-	number: getRandomNumber,
-	symbol: getRandomSymbol
-}
+const randomIzedChar = {
+  lower: getRandomLower,
+  upper: getRandomUpper,
+  number: getRandomNumber,
+  symbol: getRandomSymbol,
+};
 
 function generatePassword(lower, upper, number, symbol, length) {
-  generatedPassword = "";
+  let generatedPassword = "";
   const typesCount = lower + upper + number + symbol;
-  console.log ("typesCount "+ typesCount + "Breadcrumb");
   const typesArr = [
     {
       lower,
@@ -86,38 +85,33 @@ function generatePassword(lower, upper, number, symbol, length) {
   for (let i = 0; i < length; i++) {
     typesArr.forEach((type) => {
       const funcName = Object.keys(type)[0];
-      generatedPassword += randomfunc[funcName]();
+      generatedPassword += randomIzedChar[izedCharcName]();
     });
   }
 
   const finalPassword = generatedPassword.slice(0, length);
+
   return finalPassword;
-  console.log(finalPasswor);
- 
 }
 
-console.log("breadcrumb");
 // Generator functions
 function getRandomLower() {
   return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
 }
-
 function getRandomUpper() {
   return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
 }
-
 function getRandomNumber() {
   return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
 }
-
 function getRandomSymbol() {
   const symbol= "!@#$%^&*()_+<>?";
   return symbol[Math.floor(Math.random() *symbol.length)];
 }
 //check to see they work
-
 console.log(getRandomUpper());
 console.log(getRandomNumber());
 console.log(getRandomSymbol());
-
+//
+console.log("breadcrumb!!!!!!!!!!!!!!!!!!!!");
 
