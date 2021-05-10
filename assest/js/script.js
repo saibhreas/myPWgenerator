@@ -1,118 +1,125 @@
-//window.addEventListener("load", function () {
-var generateBtn = document.querySelector("#generate");  
-var plength = prompt(
-    "Creates Password between 8 and 128 characters\n How many characters do"
-  );
-  while (isNaN(plength) || plength < 8 || plength > 128) {
-    plength = prompt(
-      "Length must be numbers between 8- 128 characters. \nHow many characters would you like your password to be?"
-    );
-  }
-  console.log("this is the PW lenght given " + plength);
+// Assignment Code
+var generateBtn = document.querySelector("#generate"); //looks at id generate in html
 
-  var upperCase = confirm("Would you like to use uppercase letters?");
-  var lowerCase = confirm("Would you like to use lowercase letters?");
-  var number = confirm("would you like to use numbers?");
-  var symbol = confirm("would you like to use special characters?");
-  console.log("these were confirmed: " + "Uppercase " + upperCase + ", Lowercase "+ lowerCase + ", Numbers " +number + ", Symbols "+ symbol);
+//rewrite.js
 
-
-  while (!(upperCase || lowerCase || number || symbol)) {
-    alert("You must select at least one character type!");
-
-    upperCase = confirm("Would you like to use uppercase letters?");
-    lowerCase = confirm("Would you like to use lowercase letters?");
-    number = confirm("would you like to use numbers?");
-    symbol = confirm("would you like to use special characters?");
-  }
-
-  //DOM elements
-  const result = document.getElementById("password");
-
-  document.getElementById("generate").addEventListener("click", () => {
-    result = generatePassword(
-      lowerCase,
-      upperCase,
-      number,
-      symbol,
-      plength
-    );
-  });
-
-  /*document.getElementById("clipboard").addEventListener("click", function() {
-    const textarea = document.createElement("textarea");
-    const password = result;
-
-    if (!password) {
-      return;
-    }
-
-    textarea.value = password;
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand("copy");
-    
-    textarea.remove();
-    alert("Password copied to clipboard");
-  });*/
-//});
-
-const randomFunc = {
-	lower: getRandomLower,
-	upper: getRandomUpper,
-	number: getRandomNumber,
-	symbol: getRandomSymbol
-};
-
-function generatePassword(lower, upper, number, symbol, length) {
-  let generatedPassword = "";
-  const typesCount = lower + upper + number + symbol;
-  
-  const typesArr = [{lower},{upper}, {number}, {symbol}
-  ].filter((item) => Object.values(item)[0]);
-  console.log("typesArr: ", typesArr);
-  console.log("Breadcrumb");
-  console.log(length);
-
-  // create a loop
-  for (let i = 0; i < length; i= typesCount) {
-    typesArr.forEach((type) => {
-      console.log(type);
-      const funcName = Object.keys(type)[0];
-      generatedPassword += randomfunc[funcName]();
-      console.log(generatedPassword);
-    });
-  }
-
-  const finalPassword = generatedPassword.slice(0, length);
-  return finalPassword;
-  console.log(finalPasswor);
- 
-}
-
-console.log("breadcrumb");
-// Generator functions
-function getRandomLower() {
-  return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
-}
-
+/*Functions required to generate random Charachters based on UTF-8 
+    (loaded in Head section of HTML)
+    uses return Strig .fromCharCode and applies Math.floor & Math.random
+:   Chosen to reduce calls for events.          *****
+    Generators: random/lower, randomUpper randomNumber & randomSymbol */
 function getRandomUpper() {
   return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
-}
-
+} // 26 iterations of letters in aplahabet, starts at decimal 65 in chart
+function getRandomLower() {
+  return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+} // 26 iterations of letters in aplahabet, starts at decimal 97 in chart
 function getRandomNumber() {
   return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
-}
-
+} // 10 (0 to 9), starts at decimal 48 in chart
 function getRandomSymbol() {
-  const symbol= "!@#$%^&*()_+<>?";
-  return symbol[Math.floor(Math.random() *symbol.length)];
+  const symbol = "~!@#$%^&*()_+<>?="; //creates inflexable variable with the string
+  return symbol[Math.floor(Math.random() * symbol.length)];
+} //uses string.lenght to increment thru const symbol
+//First validation Breadcrumb
+console.log(
+  "Upper: " +
+    getRandomUpper() +
+    ", Lower: " +
+    getRandomLower() +
+    ", Number: " +
+    getRandomNumber() +
+    ", Symbol: " +
+    getRandomSymbol()
+);
+
+/******************************************************
+    /*Initiate prompts to aquire criteria*/
+//looks at id generate in html
+var pwLength = prompt(
+  "Creates Password between 8 and 128 characters\nChoose the number of characters"
+);
+while (isNaN(pwLength) || pwLength < 8 || pwLength > 128) {
+  pwLength = prompt(
+    "Length must be numbers between 8- 128 characters. \nHow many characters would you like your password to be?"
+  );
 }
-//check to see they work
+console.log("PW length given " + pwLength);
 
-console.log(getRandomUpper());
-console.log(getRandomNumber());
-console.log(getRandomSymbol());
+/*****************************************************
+ * Prompt for citera of password 
+ * use of confirm reduces user entering incpatable answers, 
+ * reducing usage of prompt (reduces number of events)  ****/
+var upperCase = confirm("Include Upper Case Letters?");
+var lowerCase = confirm("Include Lower Case Letters?");
+var numberCase = confirm("Include Numbers Case Letters?");
+var symbolCase = confirm("Include Symbols Case Letters?");
+
+while (!(upperCase ||lowerCase ||numberCase ||symbolCase )){
+  alert("Invalid Response\nYou must accept one form of character to generate password");
+  var upperCase = confirm("Include Upper Case Letters?");
+  var lowerCase = confirm("Include Lower Case Letters?");
+  var numberCase = confirm("Include Numbers Case Letters?");
+  var symbolCase = confirm("Include Symbols Case Letters?");
+}
+//Breadcrumb
+console.log("Status of choice: Upper= "+upperCase +"  Lower= "+lowerCase +"  Number= "+numberCase +" Symbol= "+symbolCase);
+
+const choiceNumber = upperCase +lowerCase +numberCase +symbolCase;
+console.log("Choice count: ", choiceNumber);
+
+const choiceArr=[{upperCase},{lowerCase},{numberCase},{symbolCase}];
 
 
+
+/****************************************************
+ *Works from here up
+ * 
+********************/
 generateBtn.addEventListener("click", writePassword);
+
+function writePassword() {
+  var password = generatePassword(upperCase,lowerCase,numberCase,symbolCase,pwLength);
+  var passwordText = document.querySelector("#password");
+
+   passwordText.value = password;
+}
+
+/*const result = document.getElementById("password");
+document.getElementById('generate').addEventListener("click", fucntion(){
+  result = generatePassword(upperCase,lowerCase,numberCase,symbolCase,pwLength);
+});
+
+const randomBasket = { 
+  upper: getRandomUpper,
+  lower: getRandomLower,
+  number:getRandomNumber,
+  symbol: getRandomSymbol,
+}
+console.log("looking to see where I call off the cliff");
+
+function generatePassword(upper, lower, number, symbol,choiceNumber, pwLength){
+  let generatedPassword = "";
+  const choiceArr = [{upper},{lower},{number},{symbol}].filter((item) => Object.values(item[0]));
+
+ 
+ 
+
+}
+
+  
+  filter((item) =>Object.value(item)[0]);//removes !true from all
+   
+
+
+ Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+
+}
+
+ Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);*/
