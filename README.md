@@ -50,3 +50,4 @@ This also reduced the size of the code by eliminating multiple if conditions.
 
 
 
+May11 6pm, Still no image loading properly.
