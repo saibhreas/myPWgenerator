@@ -1,7 +1,5 @@
 # myPWgenerator   [Link](https://saibhreas.github.io/myPWgenerator/)
-![Image](https://saibhreas.github.io/myPWgenerator/assets/img/ScreenShots.png)
-
-
+![Image](./assest/img/ScreenShots.png)
 # **Password Genereator**
 ## JS assignemnt to create a Password Generator
 ### Plese pardon apperance, still learning MD language
